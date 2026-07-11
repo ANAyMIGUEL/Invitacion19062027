@@ -26,7 +26,7 @@ function showSlide(index) {
   }, 260);
 }
 
-  function showMessage(title, text) {
+  function showMessage(title, text, showInstall = false) {
   const modal = document.getElementById("successModal");
   const successTitle = document.getElementById("successTitle");
   const successText = document.getElementById("successText");
@@ -38,8 +38,13 @@ function showSlide(index) {
   successTitle.textContent = title;
   successText.textContent = text;
 
-  if (installQuestion) installQuestion.style.display = "block";
-  if (closeSuccess) closeSuccess.style.display = "none";
+  if (installQuestion) {
+    installQuestion.style.display = showInstall ? "block" : "none";
+  }
+
+  if (closeSuccess) {
+    closeSuccess.style.display = showInstall ? "none" : "inline-block";
+  }
 
   modal.classList.add("show");
 }
@@ -379,6 +384,12 @@ if (musicToggle && bgMusic) {
 
       try {
         sendButton.disabled = true;
+        const sendingNotice = document.createElement("div");
+sendingNotice.id = "sendingNotice";
+sendingNotice.textContent = "Enviando respuesta…";
+document.body.appendChild(sendingNotice);
+sendButton.classList.add("sending");
+sendButton.setAttribute("aria-label", "Enviando respuesta");
 
         await fetch(WEB_APP_URL, {
           method: "POST",
@@ -390,11 +401,16 @@ if (musicToggle && bgMusic) {
         localStorage.setItem("idInvitado", idGuardado);
         localStorage.setItem("respuestaBoda", JSON.stringify(data));
 
-        showMessage(`¡Gracias, ${getValue("nombre")}!`, "Hemos recibido tu respuesta correctamente.");
+       showMessage(
+  `¡Gracias, ${getValue("nombre")}!`,
+  "Hemos recibido tu respuesta correctamente.",
+  true
+);
       } catch {
         showMessage("Error", "No se ha podido enviar la respuesta. Inténtalo de nuevo.");
       } finally {
-        sendButton.disabled = false;
+        document.getElementById("sendingNotice")?.remove();
+sendButton.disabled = false;
       }
     });
   }

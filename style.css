@@ -932,3 +932,37 @@ button,input,select,textarea{
 .install-buttons{
   margin-bottom:10px !important;
 }
+/* AVISO MIENTRAS SE ENVÍA LA RESPUESTA */
+
+#send.sending::after{
+  content:"Enviando...";
+  position:fixed;
+  left:50%;
+  bottom:8%;
+  transform:translateX(-50%);
+  z-index:20000;
+  padding:12px 22px;
+  border-radius:24px;
+  background:rgba(95,67,35,.95);
+  color:white;
+  font-size:16px;
+  font-weight:600;
+  white-space:nowrap;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+  pointer-events:none;
+}
+#sendingNotice{
+  position:fixed;
+  left:50%;
+  bottom:8%;
+  transform:translateX(-50%);
+  z-index:30000;
+  padding:12px 22px;
+  border-radius:24px;
+  background:rgba(95,67,35,.96);
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+  white-space:nowrap;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
