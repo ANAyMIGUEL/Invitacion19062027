@@ -1,10 +1,10 @@
-const CACHE_NAME = "invitacion-am-v2";
+const CACHE_NAME = "invitacion-am-v3";
 
 const FILES_TO_CACHE = [
   "./",
   "./index.html",
-  "./style.css",
-  "./script.js",
+  "./style.css?v=600",
+"./script.js?v=600",
   "./manifest.json",
   "./img/slide1.png",
   "./img/slide2.png",

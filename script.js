@@ -355,82 +355,134 @@ if (musicToggle && bgMusic) {
   });
 }
 
-  /* ENVIAR RESPUESTA */
+ /* ENVIAR RESPUESTA */
 
-  const sendButton = document.getElementById("send");
+const sendButton = document.getElementById("send");
 
-  if (sendButton) {
-    sendButton.addEventListener("click", async () => {
-      if (!validateSlide5()) {
-        showSlide(4);
-        showMessage("Falta información", "Te ha faltado algún campo sin cumplimentar.");
-        return;
-      }
+if (sendButton) {
+  sendButton.addEventListener("click", async (event) => {
+    event.preventDefault();
 
-      const idGuardado =
-        localStorage.getItem("idInvitado") ||
-        (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()));
+    const successModal = document.getElementById("successModal");
 
-      const data = {
-        idInvitado: idGuardado,
-        nombre: getValue("nombre"),
-        adultos: getValue("personas"),
-        ninos: getValue("ninos"),
-        numNinos: getValue("cuantosNinos"),
-        alergias: getValue("alergias"),
-        bus: getValue("bus"),
-        contacto: getValue("contacto")
-      };
+    if (successModal?.classList.contains("show")) {
+      return;
+    }
 
-      try {
-        sendButton.disabled = true;
-        const sendingNotice = document.createElement("div");
-sendingNotice.id = "sendingNotice";
-sendingNotice.textContent = "Enviando respuesta…";
-document.body.appendChild(sendingNotice);
-sendButton.classList.add("sending");
-sendButton.setAttribute("aria-label", "Enviando respuesta");
+    if (!validateSlide5()) {
+      showSlide(4);
+      showMessage(
+        "Falta información",
+        "Te ha faltado algún campo sin cumplimentar."
+      );
+      return;
+    }
 
-        await fetch(WEB_APP_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        });
+    const idGuardado =
+      localStorage.getItem("idInvitado") ||
+      (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()));
 
-        localStorage.setItem("idInvitado", idGuardado);
-        localStorage.setItem("respuestaBoda", JSON.stringify(data));
+    const data = {
+      idInvitado: idGuardado,
+      nombre: getValue("nombre"),
+      adultos: getValue("personas"),
+      ninos: getValue("ninos"),
+      numNinos: getValue("cuantosNinos"),
+      alergias: getValue("alergias"),
+      bus: getValue("bus"),
+      contacto: getValue("contacto")
+    };
 
-       showMessage(
-  `¡Gracias, ${getValue("nombre")}!`,
-  "Hemos recibido tu respuesta correctamente.",
-  true
-);
-      } catch {
-        showMessage("Error", "No se ha podido enviar la respuesta. Inténtalo de nuevo.");
-      } finally {
-        document.getElementById("sendingNotice")?.remove();
-sendButton.disabled = false;
-      }
+    try {
+      sendButton.disabled = true;
+
+      document.getElementById("sendingNotice")?.remove();
+
+      const sendingNotice = document.createElement("div");
+      sendingNotice.id = "sendingNotice";
+      sendingNotice.textContent = "Enviando respuesta…";
+      document.body.appendChild(sendingNotice);
+
+      const envio = fetch(WEB_APP_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const esperaMinima = new Promise((resolve) => {
+        setTimeout(resolve, 2000);
+      });
+
+      await Promise.all([envio, esperaMinima]);
+
+      localStorage.setItem("idInvitado", idGuardado);
+      localStorage.setItem("respuestaBoda", JSON.stringify(data));
+
+      sendingNotice.remove();
+
+      await new Promise((resolve) => {
+        setTimeout(resolve, 300);
+      });
+
+      showMessage(
+        `¡Gracias, ${getValue("nombre")}!`,
+        "Hemos recibido tu respuesta correctamente.",
+        true
+      );
+
+    } catch {
+      document.getElementById("sendingNotice")?.remove();
+
+      showMessage(
+        "Error",
+        "No se ha podido enviar la respuesta. Inténtalo de nuevo."
+      );
+
+} finally {
+  document.getElementById("sendingNotice")?.remove();
+  sendButton.disabled = false;
+}
+
     });
-  }
+  } 
 
-  /* CERRAR MODAL */
+/* CERRAR MODAL */
 
-  const successModal = document.getElementById("successModal");
-  const closeSuccess = document.getElementById("closeSuccess");
+const successModal = document.getElementById("successModal");
+const closeSuccess = document.getElementById("closeSuccess");
 
-  if (successModal && closeSuccess) {
-    closeSuccess.addEventListener("click", () => {
-      successModal.classList.remove("show");
-    });
+if (successModal && closeSuccess) {
+  closeSuccess.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
 
-    successModal.addEventListener("click", (event) => {
-      if (event.target === successModal) {
-        successModal.classList.remove("show");
-      }
-    });
-  }
+    document.getElementById("sendingNotice")?.remove();
+
+    if (musicIsPlaying) {
+      stopMusic();
+    }
+
+    const successTitle = document.getElementById("successTitle");
+    const successText = document.getElementById("successText");
+    const installQuestion = document.getElementById("installQuestion");
+
+    if (successTitle) {
+      successTitle.textContent = "¡Gracias!";
+    }
+
+    if (successText) {
+      successText.textContent =
+        "Tu respuesta ha quedado registrada. Ya puedes cerrar esta ventana.";
+    }
+
+    if (installQuestion) {
+      installQuestion.style.display = "none";
+    }
+
+    closeSuccess.style.display = "none";
+  });
+}
   /* VISOR ZOOM DIAPOSITIVAS */
 
 const zoomButton = document.getElementById("zoomButton");
