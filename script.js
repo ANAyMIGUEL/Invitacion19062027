@@ -443,7 +443,7 @@ if (asistentes === "No podré asistir/No podremos asistir") {
   titulo = `¡Qué ilusión, ${nombre}! ❤️`;
 
   mensaje =
-    "Hemos recibido tu respuesta correctamente. ¡Qué ilusión verte con nosotros!";
+    "Hemos recibido tu respuesta correctamente. ¡Qué ilusión tenerte con nosotros!";
 
 } else if (asistentes === "2") {
 
@@ -465,8 +465,6 @@ showMessage(
   mensaje,
   true
 );
-
-}
 
     } catch {
       document.getElementById("sendingNotice")?.remove();
