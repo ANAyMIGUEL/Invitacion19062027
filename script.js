@@ -425,11 +425,48 @@ if (sendButton) {
         setTimeout(resolve, 300);
       });
 
-      showMessage(
-        `¡Gracias, ${getValue("nombre")}!`,
-        "Hemos recibido tu respuesta correctamente.",
-        true
-      );
+const nombre = getValue("nombre");
+const asistentes = getValue("personas");
+
+let titulo = "";
+let mensaje = "";
+
+if (asistentes === "No podré asistir/No podremos asistir") {
+
+  titulo = `Gracias, ${nombre} ❤️`;
+
+  mensaje =
+    "Hemos recibido tu respuesta. Gracias por avisarnos. Te/Os echaremos de menos.";
+
+} else if (asistentes === "1") {
+
+  titulo = `¡Qué ilusión, ${nombre}! ❤️`;
+
+  mensaje =
+    "Hemos recibido tu respuesta correctamente. ¡Qué ilusión verte con nosotros!";
+
+} else if (asistentes === "2") {
+
+  titulo = `¡Qué ilusión, ${nombre}! ❤️`;
+
+  mensaje =
+    "Hemos recibido tu respuesta correctamente. ¡Qué ilusión teneros con nosotros!";
+
+} else {
+
+  titulo = `¡Qué ilusión, ${nombre}! ❤️`;
+
+  mensaje =
+    "Hemos recibido tu respuesta correctamente. ¡Qué ilusión que vengáis a compartir este día con nosotros!";
+}
+
+showMessage(
+  titulo,
+  mensaje,
+  true
+);
+
+}
 
     } catch {
       document.getElementById("sendingNotice")?.remove();
