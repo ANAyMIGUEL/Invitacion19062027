@@ -975,3 +975,34 @@ button,input,select,textarea{
 #finalNotice span{
   font-size:17px;
 }
+/* LATIDO SUAVE DEL CORAZÓN */
+
+.success-heart{
+  animation:heartBeat 2.8s infinite;
+  transform-origin:center;
+}
+
+@keyframes heartBeat{
+
+  0%, 88%, 100%{
+    transform:scale(1);
+  }
+
+  91%{
+    transform:scale(1.10);
+  }
+
+  94%{
+    transform:scale(0.96);
+  }
+
+  97%{
+    transform:scale(1.06);
+  }
+
+}
+#startButton{
+  z-index:20000 !important;
+  pointer-events:auto !important;
+  touch-action:manipulation !important;
+}
