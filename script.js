@@ -503,12 +503,12 @@ if (successModal && closeSuccess) {
     const installQuestion = document.getElementById("installQuestion");
 
     if (successTitle) {
-      successTitle.textContent = "";
+      successTitle.textContent = "19/06/2027";
     }
 
     if (successText) {
       successText.textContent =
-        "Tu respuesta ha quedado registrada. Ya puedes cerrar esta ventana.";
+        "¡QUÉ NERVIOS!";
     }
 
     if (installQuestion) {
