@@ -433,7 +433,7 @@ let mensaje = "";
 
 if (asistentes === "No podré asistir/No podremos asistir") {
 
-  titulo = `Gracias, ${nombre} 🥂`;
+  titulo = `Gracias, ${nombre}. 😢`;
 
   mensaje =
     "Hemos recibido tu respuesta. Gracias por avisarnos. Te/Os echaremos de menos.";
