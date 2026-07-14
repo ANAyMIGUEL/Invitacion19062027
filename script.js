@@ -440,21 +440,21 @@ if (asistentes === "No podré asistir/No podremos asistir") {
 
 } else if (asistentes === "1") {
 
-  titulo = `¡Qué ilusión, ${nombre}! ❤️`;
+  titulo = `¡Qué ilusión, ${nombre}! 🥂`;
 
   mensaje =
     "Hemos recibido tu respuesta correctamente. ¡Qué alegría tenerte con nosotros!";
 
 } else if (asistentes === "2") {
 
-  titulo = `¡Qué ilusión, ${nombre}! ❤️`;
+  titulo = `¡Qué ilusión, ${nombre}! 🥂`;
 
   mensaje =
     "Hemos recibido tu respuesta correctamente. ¡Qué alegría teneros con nosotros!";
 
 } else {
 
-  titulo = `¡Qué ilusión, ${nombre}! ❤️`;
+  titulo = `¡Qué ilusión, ${nombre}! 🥂`;
 
   mensaje =
     "Hemos recibido tu respuesta correctamente. ¡Qué alegría que vengáis a compartir este día con nosotros!";
