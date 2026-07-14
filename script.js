@@ -443,21 +443,21 @@ if (asistentes === "No podré asistir/No podremos asistir") {
   titulo = `¡Qué ilusión, ${nombre}! ❤️`;
 
   mensaje =
-    "Hemos recibido tu respuesta correctamente. ¡Qué ilusión tenerte con nosotros!";
+    "Hemos recibido tu respuesta correctamente. ¡Qué alegría tenerte con nosotros!";
 
 } else if (asistentes === "2") {
 
   titulo = `¡Qué ilusión, ${nombre}! ❤️`;
 
   mensaje =
-    "Hemos recibido tu respuesta correctamente. ¡Qué ilusión teneros con nosotros!";
+    "Hemos recibido tu respuesta correctamente. ¡Qué alegría teneros con nosotros!";
 
 } else {
 
   titulo = `¡Qué ilusión, ${nombre}! ❤️`;
 
   mensaje =
-    "Hemos recibido tu respuesta correctamente. ¡Qué ilusión que vengáis a compartir este día con nosotros!";
+    "Hemos recibido tu respuesta correctamente. ¡Qué alegría que vengáis a compartir este día con nosotros!";
 }
 
 showMessage(
@@ -503,7 +503,7 @@ if (successModal && closeSuccess) {
     const installQuestion = document.getElementById("installQuestion");
 
     if (successTitle) {
-      successTitle.textContent = "¡Gracias!";
+      successTitle.textContent = "";
     }
 
     if (successText) {
