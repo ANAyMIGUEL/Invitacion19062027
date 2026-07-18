@@ -1006,3 +1006,8 @@ button,input,select,textarea{
   pointer-events:auto !important;
   touch-action:manipulation !important;
 }
+/* Quitar rodillo y sombra oscura de la transición */
+.slide.turning-in .slide-card::before,
+.slide.turning-in .slide-card::after{
+  display:none !important;
+}
