@@ -224,14 +224,17 @@ cargarRespuestaGuardada();
   /* CÓMO LLEGAR */
 
   const mapButton = document.getElementById("mapButton");
-  if (mapButton) {
-    mapButton.addEventListener("click", () => {
-      window.open(
-        "https://www.google.com/maps/search/?api=1&query=AS-381%2C%20km%203%2C15%2C%2033192%20Pruvia%20de%20Abajo%2C%20Asturias",
-        "_blank"
-      );
-    });
-  }
+
+if (mapButton) {
+  mapButton.addEventListener("click", () => {
+    const mapsUrl =
+      "https://www.google.com/maps/dir/?api=1" +
+      "&destination=Hotel%20Restaurante%20La%20Campana%2C%20AS-381%20km%203%2C15%2C%2033192%20Pruvia%20de%20Abajo%2C%20Asturias" +
+      "&travelmode=driving";
+
+    window.open(mapsUrl, "_blank");
+  });
+}
 
   /* CALENDARIO */
 
