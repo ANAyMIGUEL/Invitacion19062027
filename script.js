@@ -428,11 +428,10 @@ if (sendButton) {
       document.body.appendChild(sendingNotice);
 
       const envio = fetch(WEB_APP_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
+  method: "POST",
+  mode: "no-cors",
+  body: JSON.stringify(data)
+});
 
       const esperaMinima = new Promise((resolve) => {
         setTimeout(resolve, 2000);
