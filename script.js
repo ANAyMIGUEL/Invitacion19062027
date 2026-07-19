@@ -355,6 +355,30 @@ if (musicToggle && bgMusic) {
   });
 }
 
+/* INFORMACIÓN ADICIONAL SLIDE 3 */
+
+const moreInfoButton = document.getElementById("moreInfoButton");
+const moreInfoModal = document.getElementById("moreInfoModal");
+const closeMoreInfo = document.getElementById("closeMoreInfo");
+
+if (moreInfoButton && moreInfoModal && closeMoreInfo) {
+
+  moreInfoButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    moreInfoModal.classList.add("show");
+  });
+
+  closeMoreInfo.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    moreInfoModal.classList.remove("show");
+  });
+
+}
+
  /* ENVIAR RESPUESTA */
 
 const sendButton = document.getElementById("send");

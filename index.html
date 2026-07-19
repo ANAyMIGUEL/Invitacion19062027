@@ -55,11 +55,19 @@
   </section>
 
   <section class="slide" id="slide3">
-    <button class="back-button" type="button" aria-label="Volver">←</button>
-    <div class="slide-card">
-      <button class="next hotspot" type="button" aria-label="Siguiente"></button>
-    </div>
-  </section>
+  <button class="back-button" type="button" aria-label="Volver">←</button>
+
+  <div class="slide-card">
+    <button
+      id="moreInfoButton"
+      class="hotspot"
+      type="button"
+      aria-label="Ver más información"
+    ></button>
+
+    <button class="next hotspot" type="button" aria-label="Siguiente"></button>
+  </div>
+</section>
 
   <section class="slide" id="slide4">
     <button class="back-button" type="button" aria-label="Volver">←</button>
@@ -194,6 +202,29 @@
 <div id="zoomModal" class="zoom-modal">
   <button id="closeZoom" class="close-zoom" type="button">×</button>
   <img id="zoomImage" src="" alt="Diapositiva ampliada">
+</div>
+
+<div id="moreInfoModal" class="more-info-modal">
+  <div class="more-info-box">
+
+    <h2>Información adicional</h2>
+
+    <div class="more-info-content">
+      <p>
+        Los horarios son orientativos (excepto la hora de la ceremonia).
+      </p>
+
+      <p>
+        Os indicaremos por aquí o por otras vías cualquier añadido al programa,
+        cambio de interés, u otra información.
+      </p>
+    </div>
+
+    <button id="closeMoreInfo" type="button">
+      Retomar La Ruta
+    </button>
+
+  </div>
 </div>
 
 <script src="./script.js"></script>
