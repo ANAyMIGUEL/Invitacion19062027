@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxK91ray7rRkj1OOr06ptvVMa5qf3QByRz_l5XJA6e3FI21HSbH7gwn-ot0lEgYpDdJ/exec";
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyUxEZuSY6vRF9fjkBmPc1IfIobZ5K48YKJaBEsYkXoX4Dgs_jeGwdar7Bxgd5UIpWd/exec";
 
   const slides = document.querySelectorAll(".slide");
   let currentSlide = 0;
@@ -430,6 +430,9 @@ if (sendButton) {
       const envio = fetch(WEB_APP_URL, {
   method: "POST",
   mode: "no-cors",
+  headers: {
+    "Content-Type": "text/plain;charset=utf-8"
+  },
   body: JSON.stringify(data)
 });
 
